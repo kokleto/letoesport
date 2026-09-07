@@ -1,1 +1,80 @@
-const timerDisplay=document.querySelector('#timer');const stopButton=document.querySelector('#stopButton');const resetButton=document.querySelector('#resetButton');const statusText=document.querySelector('#status');const rewardModal=document.querySelector('#rewardModal');const closeReward=document.querySelector('#closeReward');const confetti=document.querySelector('#confetti');let startedAt=0;let elapsed=0;let frameId=null;let running=false;function formatTime(value){return value.toFixed(2).padStart(5,'0')}function paintTimer(){elapsed=(performance.now()-startedAt)/1000;timerDisplay.textContent=formatTime(elapsed);if(running)frameId=requestAnimationFrame(paintTimer)}function startTimer(){running=true;startedAt=performance.now()-elapsed*1000;stopButton.classList.add('running');stopButton.textContent='หยุดเวลา';statusText.textContent='กำลังจับเวลา... หยุดที่ 5.00';frameId=requestAnimationFrame(paintTimer)}function stopTimer(){running=false;cancelAnimationFrame(frameId);elapsed=Number(((performance.now()-startedAt)/1000).toFixed(2));timerDisplay.textContent=formatTime(elapsed);stopButton.classList.remove('running');stopButton.textContent='เริ่มจับเวลา';if(elapsed===5){statusText.textContent='PERFECT STOP!';showReward()}else{const difference=Math.abs(elapsed-5).toFixed(2);statusText.textContent=elapsed<5?`เร็วไป ${difference} วินาที ลองอีกครั้ง`:`ช้าไป ${difference} วินาที ลองอีกครั้ง`}}function resetTimer(){running=false;cancelAnimationFrame(frameId);elapsed=0;timerDisplay.textContent='00.00';stopButton.classList.remove('running');stopButton.textContent='เริ่มจับเวลา';statusText.textContent='เป้าหมาย: 5.00 วินาที'}function showReward(){rewardModal.classList.add('open');rewardModal.setAttribute('aria-hidden','false');confetti.innerHTML=Array.from({length:55},(_,index)=>`<i style="left:${Math.random()*100}%;background:${['#d6ef50','#ff4e3e','#fff','#5bc7db'][index%4]};--x:${(Math.random()-.5)*260}px;animation-delay:${Math.random()*.25}s"></i>`).join('')}function hideReward(){rewardModal.classList.remove('open');rewardModal.setAttribute('aria-hidden','true');confetti.innerHTML=''}stopButton.addEventListener('click',()=>running?stopTimer():startTimer());resetButton.addEventListener('click',resetTimer);closeReward.addEventListener('click',hideReward);rewardModal.querySelector('.reward-backdrop').addEventListener('click',hideReward);document.addEventListener('keydown',event=>{if(event.key==='Escape')hideReward()});
+const timerDisplay = document.querySelector('#timer');
+const stopButton = document.querySelector('#stopButton');
+const resetButton = document.querySelector('#resetButton');
+const statusText = document.querySelector('#status');
+const rewardModal = document.querySelector('#rewardModal');
+const closeReward = document.querySelector('#closeReward');
+const confetti = document.querySelector('#confetti');
+let startedAt = 0;
+let elapsed = 0;
+let frameId = null;
+let running = false;
+
+function formatTime(value) {
+	return value.toFixed(2).padStart(5, '0').replace('.', ':');
+}
+
+function roundedTime(value) {
+	const hundredths = Math.floor(value * 100 + 0.000001);
+	return Math.floor((hundredths + 4) / 10) / 10;
+}
+
+function paintTimer() {
+	elapsed = (performance.now() - startedAt) / 1000;
+	timerDisplay.textContent = formatTime(roundedTime(elapsed));
+	if (running) frameId = requestAnimationFrame(paintTimer);
+}
+
+function startTimer() {
+	running = true;
+	startedAt = performance.now() - elapsed * 1000;
+	stopButton.classList.add('running');
+	stopButton.textContent = 'หยุดเวลา';
+	statusText.textContent = 'กำลังจับเวลา... หยุดที่ 5.00';
+	frameId = requestAnimationFrame(paintTimer);
+}
+
+function stopTimer() {
+	running = false;
+	cancelAnimationFrame(frameId);
+	elapsed = (performance.now() - startedAt) / 1000;
+	const roundedElapsed = roundedTime(elapsed);
+	timerDisplay.textContent = formatTime(roundedElapsed);
+	stopButton.classList.remove('running');
+	stopButton.textContent = 'เริ่มจับเวลา';
+	if (roundedElapsed === 5) {
+		statusText.textContent = 'PERFECT STOP!';
+		showReward();
+	} else {
+		const difference = Math.abs(roundedElapsed - 5).toFixed(2);
+		statusText.textContent = roundedElapsed < 5 ? `เร็วไป ${difference} วินาที ลองอีกครั้ง` : `ช้าไป ${difference} วินาที ลองอีกครั้ง`;
+	}
+}
+
+function resetTimer() {
+	running = false;
+	cancelAnimationFrame(frameId);
+	elapsed = 0;
+	timerDisplay.textContent = '00:00';
+	stopButton.classList.remove('running');
+	stopButton.textContent = 'เริ่มจับเวลา';
+	statusText.textContent = 'เป้าหมาย: 5.00 วินาที';
+}
+
+function showReward() {
+	rewardModal.classList.add('open');
+	rewardModal.setAttribute('aria-hidden', 'false');
+	confetti.innerHTML = Array.from({length: 55}, (_, index) => `<i style="left:${Math.random() * 100}%;background:${['#d6ef50', '#ff4e3e', '#fff', '#5bc7db'][index % 4]};--x:${(Math.random() - .5) * 260}px;animation-delay:${Math.random() * .25}s"></i>`).join('');
+}
+
+function hideReward() {
+	rewardModal.classList.remove('open');
+	rewardModal.setAttribute('aria-hidden', 'true');
+	confetti.innerHTML = '';
+}
+
+stopButton.addEventListener('click', () => running ? stopTimer() : startTimer());
+resetButton.addEventListener('click', resetTimer);
+closeReward.addEventListener('click', hideReward);
+rewardModal.querySelector('.reward-backdrop').addEventListener('click', hideReward);
+document.addEventListener('keydown', event => { if (event.key === 'Escape') hideReward(); });
