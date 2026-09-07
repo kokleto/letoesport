@@ -92,7 +92,8 @@ body { transition: background-color .25s, color .25s; }
 @media (max-width: 600px) { .theme-toggle { transform: scale(.9); transform-origin: right center; } .hero-controls { right: 8%; bottom: 14px; } }
 .auth-button { padding: 8px 11px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 11px; font-weight: 700; white-space: nowrap; }
 .auth-button:hover { border-color: var(--coral); color: var(--coral); }
-.register-trigger { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.login-trigger { border-color: var(--coral); color: var(--coral); }
+.register-trigger { background: var(--lime); color: var(--ink); border-color: var(--lime); }
 .auth-modal { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; padding: 20px; visibility: hidden; opacity: 0; transition: opacity .2s, visibility .2s; }
 .auth-modal.open { visibility: visible; opacity: 1; }
 .auth-backdrop { position: absolute; inset: 0; background: rgba(16, 19, 23, .78); }
@@ -113,6 +114,19 @@ body { transition: background-color .25s, color .25s; }
 .auth-note { margin: 20px 0 0; text-align: center; }
 .auth-note button { padding: 0; background: transparent; color: var(--coral); font-weight: 800; }
 [data-theme="dark"] .auth-panel { background: #202427; }
+.sidebar-toggle { margin-left: auto; width: 27px; height: 27px; border: 1px solid #45494a; background: transparent; color: #c6c8c2; font-size: 20px; line-height: 1; }
+.sidebar-toggle:hover { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.sidebar.collapsed { width: 76px; padding-left: 14px; padding-right: 14px; }
+.sidebar.collapsed .brand-name, .sidebar.collapsed .live-indicator, .sidebar.collapsed .sidebar-label, .sidebar.collapsed .game-list, .sidebar.collapsed .sidebar-bottom > div:not(.mini-avatar), .sidebar.collapsed .more-btn, .sidebar.collapsed .nav-label, .sidebar.collapsed .nav-item b { display: none; }
+.sidebar.collapsed .brand { justify-content: center; padding: 0; }
+.sidebar.collapsed .sidebar-toggle { margin-left: 0; transform: rotate(180deg); }
+.sidebar.collapsed .nav-item { justify-content: center; padding-left: 8px; padding-right: 8px; }
+.sidebar.collapsed .nav-icon { width: auto; }
+.sidebar.collapsed .sidebar-bottom { justify-content: center; padding-left: 0; padding-right: 0; }
+.sidebar.collapsed + .main-content { min-width: 0; }
+[data-theme="dark"] .login-trigger { border-color: var(--coral); color: var(--coral); }
+[data-theme="dark"] .register-trigger { background: var(--lime); color: #101317; border-color: var(--lime); }
+@media (min-width: 901px) { .sidebar { transition: width .25s, padding .25s; } }
 @media (max-width: 680px) { .top-actions { gap: 6px; } .auth-button { padding: 6px 7px; font-size: 9px; } .profile-chip { display: none; } .auth-panel { padding: 25px 20px; } }
 @media (max-width: 420px) { .auth-button { font-size: 0; width: 29px; height: 29px; padding: 0; } .login-trigger::before { content: '↪'; font-size: 16px; } .register-trigger::before { content: '+'; font-size: 18px; } }
 .activity-section { display: flex; justify-content: space-between; align-items: center; gap: 28px; border-top: 1px solid var(--line); padding: 42px 0 62px; }

@@ -17,6 +17,8 @@ const feedPosts = [
 ];
 const newsGrid = document.querySelector('#newsGrid');
 const toast = document.querySelector('#toast');
+const sidebar = document.querySelector('.sidebar');
+const sidebarToggle = document.querySelector('#sidebarToggle');
 const thaiDate = document.querySelector('#thaiDate');
 const thaiTime = document.querySelector('#thaiTime');
 function updateThaiClock() {
@@ -26,6 +28,28 @@ function updateThaiClock() {
 }
 updateThaiClock();
 setInterval(updateThaiClock, 1000);
+sidebarToggle.addEventListener('click', () => {
+  const collapsed = sidebar.classList.toggle('collapsed');
+  sidebarToggle.setAttribute('aria-expanded', String(!collapsed));
+  sidebarToggle.setAttribute('aria-label', collapsed ? 'ขยายเมนู' : 'ย่อเมนู');
+  sidebarToggle.textContent = collapsed ? '›' : '‹';
+  localStorage.setItem('leto-sidebar-collapsed', String(collapsed));
+});
+if (localStorage.getItem('leto-sidebar-collapsed') === 'true') {
+  sidebar.classList.add('collapsed');
+  sidebarToggle.setAttribute('aria-expanded', 'false');
+  sidebarToggle.setAttribute('aria-label', 'ขยายเมนู');
+  sidebarToggle.textContent = '›';
+}
+const sectionLinks = [...document.querySelectorAll('.nav-item[data-section]')];
+function setActiveSection(section) { sectionLinks.forEach(link => link.classList.toggle('active', link.dataset.section === section)); }
+sectionLinks.forEach(link => link.addEventListener('click', () => setActiveSection(link.dataset.section)));
+const watchedSections = sectionLinks.map(link => document.querySelector(`#${link.dataset.section}`)).filter(Boolean);
+const sectionObserver = new IntersectionObserver(entries => {
+  const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  if (visible) setActiveSection(visible.target.id);
+}, { rootMargin: '-18% 0px -62% 0px', threshold: [0.1, 0.3, 0.6] });
+watchedSections.forEach(section => sectionObserver.observe(section));
 function renderNews(filter='all', query='') {
   const items = news.filter(item => (filter === 'all' || item.game === filter) && (!query || `${item.title} ${item.tag}`.toLowerCase().includes(query.toLowerCase())));
   newsGrid.innerHTML = items.length ? items.map(item => `<article class="news-card" tabindex="0" data-news-title="${item.title}"><img src="${item.img}" alt="${item.title}" loading="lazy"><span class="tag">${item.tag}</span><h3>${item.title}</h3><p>${item.desc}</p><time>${item.time}</time><span class="read-more">อ่านรายละเอียด ↗</span></article>`).join('') : '<p class="empty-state">ไม่พบข่าวที่ตรงกับการค้นหา</p>';
