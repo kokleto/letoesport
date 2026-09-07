@@ -71,6 +71,7 @@ body { transition: background-color .25s, color .25s; }
 .theme-toggle span:first-child { background: var(--ink); color: var(--paper); }
 .theme-toggle span:last-child { opacity: .45; }
 [data-theme="dark"] { --paper: #171a1d; --ink: #f4f2ec; --muted: #a9aaa5; --line: #383c3e; --white: #202427; }
+[data-theme="dark"] body { background-color: #171a1d; color: #f4f2ec; }
 [data-theme="dark"] .sidebar { background: #0c0f11; }
 [data-theme="dark"] .match-card, [data-theme="dark"] .post-composer { background: #24282a; }
 [data-theme="dark"] .news-card { border-color: var(--line); }

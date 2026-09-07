@@ -2,11 +2,18 @@ const news = [
   {game:'valorant', tag:'VALORANT / VCT PACIFIC', title:'Paper Rex เปิดตัวผู้เล่นใหม่ พร้อมลุยศึก Pacific Stage 2', desc:'การกลับมาของ something ที่แฟนๆ รอคอย อาจเปลี่ยนเกมของทีม', detail:'Paper Rex เปิดตัวผู้เล่นใหม่อย่างเป็นทางการก่อนเข้าสู่ Pacific Stage 2 โดยทีมวางแผนปรับสไตล์การเล่นให้ยืดหยุ่นขึ้น ทั้งในช่วงดราฟต์และการเล่นรอบกลางเกม\n\nการเปลี่ยนแปลงครั้งนี้ทำให้แฟนๆ จับตาดูว่าทีมจะรักษาจังหวะการบุกที่เป็นเอกลักษณ์ พร้อมลดข้อผิดพลาดในช่วงปิดเกมได้มากแค่ไหน', time:'2 ชั่วโมงที่แล้ว', img:'https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=700&q=80'},
   {game:'lol', tag:'LEAGUE OF LEGENDS / LCK', title:'T1 ยังคงไร้พ่ายในสัปดาห์ที่ 4 ของ Summer Split', desc:'ชัยชนะเหนือ Gen.G ทำให้พวกเขาขยับขึ้นเป็นจ่าฝูงเดี่ยว', detail:'T1 ยังคงรักษาฟอร์มร้อนแรงในสัปดาห์ที่ 4 หลังคว้าชัยเหนือ Gen.G ด้วยการควบคุมแผนที่และวัตถุประสงค์สำคัญอย่างแม่นยำ\n\nชัยชนะครั้งนี้ทำให้ทีมขยับขึ้นเป็นจ่าฝูงเดี่ยว และเพิ่มความมั่นใจก่อนเข้าสู่ช่วงตารางแข่งที่เข้มข้นที่สุดของ Summer Split', time:'4 ชั่วโมงที่แล้ว', img:'https://images.unsplash.com/photo-1603481546238-487240415921?auto=format&fit=crop&w=700&q=80'},
   {game:'pubg', tag:'PUBG / GLOBAL', title:'ทีมไทยพร้อมลุย PUBG Global Series ที่ริยาด', desc:'เป้าหมายเดียวคือถ้วยแชมป์ และเงินรางวัลก้อนใหญ่', detail:'ตัวแทนทีมไทยเตรียมเดินทางสู่ริยาดเพื่อแข่งขัน PUBG Global Series ท่ามกลางทีมชั้นนำจากทั่วโลก\n\nทีมงานเปิดเผยว่าการซ้อมเน้นการอ่านวงและการตัดสินใจช่วงท้ายเกมเป็นพิเศษ เพราะทุกคะแนนมีผลต่อการลุ้นแชมป์และเงินรางวัลก้อนใหญ่', time:'6 ชั่วโมงที่แล้ว', img:'https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&w=700&q=80'},
-  {game:'valorant', tag:'VALORANT / ROSTER WATCH', title:'DRX ประกาศไลน์อัพใหม่ เตรียมล้างตาในรอบเพลย์ออฟ', desc:'พวกเขามีเวลาสองสัปดาห์เพื่อหาจังหวะที่ลงตัวที่สุด', detail:'DRX ประกาศไลน์อัพใหม่พร้อมเป้าหมายกลับเข้าสู่เส้นทางลุ้นแชมป์ในรอบเพลย์ออฟ ทีมจะใช้เวลาสองสัปดาห์ข้างหน้าเพื่อปรับบทบาทและสร้างระบบการสื่อสารให้ลงตัว\n\nเกมแรกของรอบต่อไปจะเป็นบททดสอบสำคัญว่าการเปลี่ยนแปลงครั้งนี้ช่วยยกระดับทีมได้มากเพียงใด', time:'เมื่อวานนี้', img:'https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=700&q=80'}
+  {game:'valorant', tag:'VALORANT / ROSTER WATCH', title:'DRX ประกาศไลน์อัพใหม่ เตรียมล้างตาในรอบเพลย์ออฟ', desc:'พวกเขามีเวลาสองสัปดาห์เพื่อหาจังหวะที่ลงตัวที่สุด', detail:'DRX ประกาศไลน์อัพใหม่พร้อมเป้าหมายกลับเข้าสู่เส้นทางลุ้นแชมป์ในรอบเพลย์ออฟ ทีมจะใช้เวลาสองสัปดาห์ข้างหน้าเพื่อปรับบทบาทและสร้างระบบการสื่อสารให้ลงตัว\n\nเกมแรกของรอบต่อไปจะเป็นบททดสอบสำคัญว่าการเปลี่ยนแปลงครั้งนี้ช่วยยกระดับทีมได้มากเพียงใด', time:'เมื่อวานนี้', img:'https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=700&q=80'},
+  {game:'lol', tag:'LEAGUE OF LEGENDS / META', title:'แพตช์ใหม่เปลี่ยนเมตา ทีมโปรเร่งปรับแผนก่อนรอบสำคัญ', desc:'ตัวเลือกในเลนกลางและการแย่งวัตถุประสงค์กลายเป็นหัวใจของเกม', detail:'แพตช์ล่าสุดทำให้จังหวะการแย่งวัตถุประสงค์มีความสำคัญมากขึ้น ทีมชั้นนำเริ่มทดลองแชมเปี้ยนและเส้นทางเดินเกมรูปแบบใหม่\n\nนักวิเคราะห์มองว่าทีมที่ปรับตัวได้เร็วจะได้เปรียบอย่างมากในช่วงสัปดาห์สุดท้ายของการแข่งขัน', time:'เมื่อวานนี้', img:'https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=700&q=80'},
+  {game:'pubg', tag:'PUBG / TEAM THAILAND', title:'ตัวแทนไทยเผยแผนการเล่น เน้นความนิ่งในเกมท้าย', desc:'การตัดสินใจที่รอบคอบอาจเป็นกุญแจพาทีมเก็บแต้มต่อเนื่อง', detail:'ตัวแทนไทยเตรียมแผนการเล่นที่เน้นการเก็บข้อมูลและรักษาทรัพยากรให้พร้อมสำหรับช่วงท้ายเกม\n\nเป้าหมายแรกคือการเก็บคะแนนให้สม่ำเสมอ ก่อนเร่งจังหวะในวันที่รูปเกมเปิดมากที่สุด', time:'2 วันที่แล้ว', img:'https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=700&q=80'},
+  {game:'valorant', tag:'VALORANT / ANALYSIS', title:'5 จังหวะ Clutch ที่นิยามเกมรอบสัปดาห์', desc:'อ่านเกมให้ขาดและกล้าตัดสินใจในวินาทีที่กดดันที่สุด', detail:'จากการพลิกสถานการณ์แบบหนึ่งต่อสามไปจนถึงการอ่านแฟลชของคู่แข่ง จังหวะ clutch เหล่านี้แสดงให้เห็นว่าความนิ่งมีผลต่อผลการแข่งขันแค่ไหน\n\nทีมโค้ชหลายทีมเริ่มนำคลิปเหล่านี้ไปใช้ในการวิเคราะห์การตัดสินใจของผู้เล่น', time:'2 วันที่แล้ว', img:'https://images.unsplash.com/photo-1603481546238-487240415921?auto=format&fit=crop&w=700&q=80'}
 ];
 const feedPosts = [
   {name:'MildFPS', avatar:'M', color:'#e8c4b7', time:'12 นาทีที่แล้ว', text:'เกม T1 วันนี้คืออ่านขาดทุกจังหวะจริงๆ แบบนี้แหละที่เรียกว่า experience', likes:24},
-  {name:'Jirayu S.', avatar:'J', color:'#b8d4c4', time:'38 นาทีที่แล้ว', text:'ใครดู VCT คืนนี้บ้างครับ คิดว่า PRX จะปิดเกม 2-0 ไหวไหม 🔥', likes:11}
+  {name:'Jirayu S.', avatar:'J', color:'#b8d4c4', time:'38 นาทีที่แล้ว', text:'ใครดู VCT คืนนี้บ้างครับ คิดว่า PRX จะปิดเกม 2-0 ไหวไหม 🔥', likes:11},
+  {name:'PloyCaster', avatar:'P', color:'#ddd0a8', time:'1 ชั่วโมงที่แล้ว', text:'ชอบที่ทีมไทยใน PUBG กล้าเล่นแผนใหม่มากขึ้น ดูแล้วมีลุ้นในรอบท้ายจริงๆ', likes:18},
+  {name:'MidDiff', avatar:'D', color:'#c8c1df', time:'2 ชั่วโมงที่แล้ว', text:'แพตช์นี้ทำให้เกมเร็วขึ้นมาก ใครมีแชมเปี้ยนลับในเลนกลางมาแชร์กันหน่อยครับ', likes:9},
+  {name:'AimLabTH', avatar:'A', color:'#c8d8e0', time:'3 ชั่วโมงที่แล้ว', text:'จังหวะ clutch ของแมตช์เมื่อคืนควรเอาไปทำเป็นคลิปสอนเลย อ่านเกมสุดๆ', likes:31},
+  {name:'NookGG', avatar:'N', color:'#e0c9b9', time:'5 ชั่วโมงที่แล้ว', text:'ตารางแข่งช่วงนี้แน่นมาก แต่ดีที่มี Leto Esport รวมข่าวกับแมตช์ไว้ให้ดูในที่เดียว', likes:14}
 ];
 const newsGrid = document.querySelector('#newsGrid');
 const toast = document.querySelector('#toast');
@@ -28,7 +35,7 @@ function openNewsModal(item) { if (!item) return; document.querySelector('#modal
 function closeNewsModal() { document.querySelector('#newsModal').classList.remove('open'); document.querySelector('#newsModal').setAttribute('aria-hidden', 'true'); }
 function showToast(message) { toast.textContent = message; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1800); }
 const themeToggle = document.querySelector('#themeToggle');
-function setTheme(theme) { document.documentElement.dataset.theme = theme; themeToggle.setAttribute('aria-pressed', theme === 'dark'); localStorage.setItem('leto-theme', theme); }
+function setTheme(theme) { document.documentElement.dataset.theme = theme; document.body.style.backgroundColor = theme === 'dark' ? '#171a1d' : ''; document.body.style.color = theme === 'dark' ? '#f4f2ec' : ''; themeToggle.setAttribute('aria-pressed', theme === 'dark'); localStorage.setItem('leto-theme', theme); }
 setTheme(localStorage.getItem('leto-theme') || 'light');
 themeToggle.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
 const heroSlides = [...document.querySelectorAll('.hero-slide')];
@@ -41,7 +48,6 @@ function resetHeroTimer() { clearInterval(heroTimer); heroTimer = setInterval(()
 document.querySelector('#heroPrev').addEventListener('click', () => { showHeroSlide(heroIndex - 1); resetHeroTimer(); });
 document.querySelector('#heroNext').addEventListener('click', () => { showHeroSlide(heroIndex + 1); resetHeroTimer(); });
 document.querySelectorAll('.hero-dot').forEach((dot, index) => dot.addEventListener('click', () => { showHeroSlide(index); resetHeroTimer(); }));
-document.querySelector('#featuredSlider').addEventListener('mouseenter', () => clearInterval(heroTimer));
 document.querySelector('#featuredSlider').addEventListener('mouseleave', resetHeroTimer);
 resetHeroTimer();
 renderNews(); renderFeed();
