@@ -33,16 +33,23 @@
     </aside>
 
     <main class="main-content" id="top">
-      <header class="topbar"><div class="breadcrumb">วันจันทร์ 07 กันยายน 2026 <span>/</span> Bangkok, TH</div><div class="top-actions"><button class="icon-btn" aria-label="แจ้งเตือน">♧<i></i></button><button class="search-toggle" id="searchToggle" aria-label="ค้นหา">⌕</button><div class="profile-chip"><div class="avatar">K</div><span>Kittisak</span><span class="chevron">⌄</span></div></div></header>
+      <header class="topbar"><div class="breadcrumb">วันจันทร์ 07 กันยายน 2026 <span>/</span> Bangkok, TH</div><div class="top-actions"><button class="theme-toggle" id="themeToggle" aria-label="เปลี่ยนโหมดสี" aria-pressed="false"><span>☾</span><span>☀</span></button><button class="icon-btn" aria-label="แจ้งเตือน">♧<i></i></button><button class="search-toggle" id="searchToggle" aria-label="ค้นหา">⌕</button><div class="profile-chip"><div class="avatar">K</div><span>Kittisak</span><span class="chevron">⌄</span></div></div></header>
       <div class="search-bar" id="searchBar"><span>⌕</span><input id="searchInput" placeholder="ค้นหาข่าว ทีม หรือผู้เล่น..." /><button id="closeSearch">ปิด</button></div>
 
       <section class="hero-section">
         <div class="section-kicker"><span class="eyebrow-line"></span> FEATURED STORY <span class="kicker-date">07.09.26</span></div>
-        <article class="hero-card">
-          <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=85" alt="การแข่งขัน esports บนเวที" />
+        <article class="hero-card" id="featuredSlider">
+          <div class="hero-slides">
+            <div class="hero-slide active" data-tag="VALORANT / VCT PACIFIC" data-title="เส้นทางใหม่ของ|Paper Rex" data-desc="การเปลี่ยนแปลงครั้งใหญ่ที่กำลังเขย่าวงการ และทำให้ Pacific กลับมาน่าจับตาอีกครั้ง" data-author="เรื่องโดย NINA CHAN" data-time="อ่าน 6 นาที"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=85" alt="การแข่งขัน esports บนเวที" /></div>
+            <div class="hero-slide" data-tag="VALORANT / VCT PACIFIC" data-title="ทุกจังหวะ|มีความหมาย" data-desc="รวมช็อตสำคัญจากเกมที่ทำให้แฟน Valorant ลุ้นจนวินาทีสุดท้าย" data-author="HIGHLIGHTS / VCT PACIFIC" data-time="คลิป 4 นาที"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1600&q=85" alt="ผู้เล่นกำลังแข่งขันเกม Valorant" /></div>
+            <div class="hero-slide" data-tag="VALORANT / MATCH DAY" data-title="เสียงเชียร์|จากทั้งภูมิภาค" data-desc="บรรยากาศหน้าเวทีและพลังของแฟนๆ ที่ทำให้แมตช์นี้แตกต่าง" data-author="FIELD REPORT / Leto Esport" data-time="อ่าน 5 นาที"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=1600&q=85" alt="บรรยากาศการแข่งขัน esports" /></div>
+            <div class="hero-slide" data-tag="VALORANT / ROSTER WATCH" data-title="ทีมใหม่|เกมใหม่" data-desc="การจัดทีมครั้งใหม่กำลังเปลี่ยนวิธีที่เราอ่านเกมใน Pacific Stage 2" data-author="เรื่องโดย NINA CHAN" data-time="อ่าน 7 นาที"><img src="https://images.unsplash.com/photo-1603481546238-487240415921?auto=format&fit=crop&w=1600&q=85" alt="ทีม esports เตรียมตัวก่อนแข่ง" /></div>
+            <div class="hero-slide" data-tag="VALORANT / AFTER MATCH" data-title="หลังเสียง|สุดท้ายของเกม" data-desc="วิเคราะห์การตัดสินใจในรอบปิดเกม และบทเรียนที่ทุกทีมเอาไปใช้ได้" data-author="ANALYSIS / Leto Esport" data-time="อ่าน 8 นาที"><img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&w=1600&q=85" alt="ภาพการแข่งขันเกมบนเวที" /></div>
+          </div>
           <div class="hero-overlay"></div>
-          <div class="hero-copy"><div class="tag valorant-tag">VALORANT / VCT PACIFIC</div><h1>เส้นทางใหม่ของ<br><em>Paper Rex</em></h1><p>การเปลี่ยนแปลงครั้งใหญ่ที่กำลังเขย่าวงการ และทำให้ Pacific กลับมาน่าจับตาอีกครั้ง</p><button class="read-btn" data-scroll="news">อ่านเรื่องเต็ม <span>↗</span></button></div>
-          <div class="hero-meta"><span>เรื่องโดย NINA CHAN</span><span>อ่าน 6 นาที</span></div>
+          <div class="hero-copy"><div class="tag valorant-tag" id="heroTag">VALORANT / VCT PACIFIC</div><h1 id="heroTitle">เส้นทางใหม่ของ<br><em>Paper Rex</em></h1><p id="heroDescription">การเปลี่ยนแปลงครั้งใหญ่ที่กำลังเขย่าวงการ และทำให้ Pacific กลับมาน่าจับตาอีกครั้ง</p><button class="read-btn" data-scroll="news">อ่านเรื่องเต็ม <span>↗</span></button></div>
+          <div class="hero-meta"><span id="heroAuthor">เรื่องโดย NINA CHAN</span><span id="heroTime">อ่าน 6 นาที</span></div>
+          <div class="hero-controls"><button class="hero-arrow" id="heroPrev" aria-label="สไลด์ก่อนหน้า">←</button><div class="hero-dots" id="heroDots" aria-label="เลือกสไลด์"></div><button class="hero-arrow" id="heroNext" aria-label="สไลด์ถัดไป">→</button></div>
         </article>
       </section>
 

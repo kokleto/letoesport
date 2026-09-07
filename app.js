@@ -27,6 +27,23 @@ function renderFeed() {
 function openNewsModal(item) { if (!item) return; document.querySelector('#modalImage').src = item.img; document.querySelector('#modalImage').alt = item.title; document.querySelector('#modalTag').textContent = item.tag; document.querySelector('#modalTitle').textContent = item.title; document.querySelector('#modalTime').textContent = item.time; document.querySelector('#modalBody').innerHTML = item.detail.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join(''); document.querySelector('#newsModal').classList.add('open'); document.querySelector('#newsModal').setAttribute('aria-hidden', 'false'); }
 function closeNewsModal() { document.querySelector('#newsModal').classList.remove('open'); document.querySelector('#newsModal').setAttribute('aria-hidden', 'true'); }
 function showToast(message) { toast.textContent = message; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1800); }
+const themeToggle = document.querySelector('#themeToggle');
+function setTheme(theme) { document.documentElement.dataset.theme = theme; themeToggle.setAttribute('aria-pressed', theme === 'dark'); localStorage.setItem('leto-theme', theme); }
+setTheme(localStorage.getItem('leto-theme') || 'light');
+themeToggle.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
+const heroSlides = [...document.querySelectorAll('.hero-slide')];
+const heroDots = document.querySelector('#heroDots');
+let heroIndex = 0;
+let heroTimer;
+heroDots.innerHTML = heroSlides.map((slide, index) => `<button class="hero-dot${index === 0 ? ' active' : ''}" aria-label="ดูสไลด์ที่ ${index + 1}"></button>`).join('');
+function showHeroSlide(index) { heroIndex = (index + heroSlides.length) % heroSlides.length; const slide = heroSlides[heroIndex]; heroSlides.forEach(item => item.classList.remove('active')); slide.classList.add('active'); document.querySelectorAll('.hero-dot').forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === heroIndex)); document.querySelector('#heroTag').textContent = slide.dataset.tag; document.querySelector('#heroTitle').innerHTML = `${slide.dataset.title.split('|')[0]}<br><em>${slide.dataset.title.split('|')[1]}</em>`; document.querySelector('#heroDescription').textContent = slide.dataset.desc; document.querySelector('#heroAuthor').textContent = slide.dataset.author; document.querySelector('#heroTime').textContent = slide.dataset.time; }
+function resetHeroTimer() { clearInterval(heroTimer); heroTimer = setInterval(() => showHeroSlide(heroIndex + 1), 6000); }
+document.querySelector('#heroPrev').addEventListener('click', () => { showHeroSlide(heroIndex - 1); resetHeroTimer(); });
+document.querySelector('#heroNext').addEventListener('click', () => { showHeroSlide(heroIndex + 1); resetHeroTimer(); });
+document.querySelectorAll('.hero-dot').forEach((dot, index) => dot.addEventListener('click', () => { showHeroSlide(index); resetHeroTimer(); }));
+document.querySelector('#featuredSlider').addEventListener('mouseenter', () => clearInterval(heroTimer));
+document.querySelector('#featuredSlider').addEventListener('mouseleave', resetHeroTimer);
+resetHeroTimer();
 renderNews(); renderFeed();
 document.querySelectorAll('.game-filter').forEach(button => button.addEventListener('click', () => { document.querySelectorAll('.game-filter').forEach(item => item.classList.remove('active')); button.classList.add('active'); renderNews(button.dataset.game, document.querySelector('#searchInput').value); }));
 document.querySelector('#searchToggle').addEventListener('click', () => { document.querySelector('#searchBar').classList.toggle('open'); if (document.querySelector('#searchBar').classList.contains('open')) document.querySelector('#searchInput').focus(); });
