@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260910" />
-  <link rel="stylesheet" href="responsive.css?v=20260910" />
+  <link rel="stylesheet" href="style.css?v=20260911" />
+  <link rel="stylesheet" href="responsive.css?v=20260911" />
 </head>
 <body>
   <div class="app-shell">
@@ -21,6 +21,7 @@
         <a class="nav-item" href="#news"><span class="nav-icon" aria-hidden="true">📰</span>ข่าวสาร</a>
         <a class="nav-item" href="#matches"><span class="nav-icon" aria-hidden="true">🎮</span>แมตช์วันนี้ <b>4</b></a>
         <a class="nav-item" href="#community"><span class="nav-icon" aria-hidden="true">💬</span>คอมมูนิตี้</a>
+        <a class="nav-item" href="game.html"><span class="nav-icon" aria-hidden="true">🏆</span>กิจกรรมเกม</a>
       </nav>
       <div class="sidebar-label">ติดตามเกม</div>
       <div class="game-list">
@@ -33,7 +34,7 @@
     </aside>
 
     <main class="main-content" id="top">
-      <header class="topbar"><div class="breadcrumb"><span id="thaiDate">กำลังโหลดวันที่</span><span>/</span><span id="thaiTime">กำลังโหลดเวลา</span><span>น.</span><span>/</span> Bangkok, TH</div><div class="top-actions"><button class="theme-toggle" id="themeToggle" aria-label="เปลี่ยนโหมดสี" aria-pressed="false"><span>🌙</span><span>☀️</span></button><button class="search-toggle" id="searchToggle" aria-label="ค้นหา">🔍</button><div class="profile-chip"><div class="avatar">K</div><span>Kittisak</span><span class="chevron">⌄</span></div></div></header>
+      <header class="topbar"><div class="breadcrumb"><span id="thaiDate">กำลังโหลดวันที่</span><span>/</span><span id="thaiTime">กำลังโหลดเวลา</span><span>น.</span><span>/</span> Bangkok, TH</div><div class="top-actions"><button class="theme-toggle" id="themeToggle" aria-label="เปลี่ยนโหมดสี" aria-pressed="false"><span>🌙</span><span>☀️</span></button><button class="search-toggle" id="searchToggle" aria-label="ค้นหา">🔍</button><button class="auth-button login-trigger" data-auth="login">เข้าสู่ระบบ</button><button class="auth-button register-trigger" data-auth="register">สมัครสมาชิก</button><div class="profile-chip"><div class="avatar">K</div><span>Kittisak</span><span class="chevron">⌄</span></div></div></header>
       <div class="search-bar" id="searchBar"><span>🔍</span><input id="searchInput" placeholder="ค้นหาข่าว ทีม หรือผู้เล่น..." /><button id="closeSearch">ปิด</button></div>
 
       <section class="hero-section">
@@ -69,6 +70,7 @@
     </main>
   </div>
   <div class="news-modal" id="newsModal" aria-hidden="true"><div class="news-modal-backdrop" data-close-modal></div><article class="news-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="ปิดข่าว">×</button><img id="modalImage" src="" alt=""><div class="modal-content"><span class="tag" id="modalTag"></span><h2 id="modalTitle"></h2><time id="modalTime"></time><div id="modalBody"></div></div></article></div>
+  <div class="auth-modal" id="authModal" aria-hidden="true"><div class="auth-backdrop" data-close-auth></div><section class="auth-panel" role="dialog" aria-modal="true" aria-labelledby="authTitle"><button class="auth-close" id="authClose" aria-label="ปิดหน้าต่าง">×</button><div class="auth-brand">Leto Esport<span>.</span></div><div class="auth-tabs"><button class="auth-tab active" data-auth-tab="login">เข้าสู่ระบบ</button><button class="auth-tab" data-auth-tab="register">สมัครสมาชิก</button></div><h2 id="authTitle">ยินดีต้อนรับกลับ</h2><p class="auth-subtitle" id="authSubtitle">เข้าสู่ระบบเพื่อร่วมกิจกรรมและคอมมูนิตี้</p><form id="authForm"><label>อีเมล<input type="email" id="authEmail" placeholder="you@example.com" required></label><label id="nameField">ชื่อที่แสดง<input type="text" id="authName" placeholder="ชื่อของคุณ"></label><label>รหัสผ่าน<input type="password" id="authPassword" placeholder="อย่างน้อย 6 ตัวอักษร" minlength="6" required></label><button class="auth-submit" type="submit" id="authSubmit">เข้าสู่ระบบ</button></form><p class="auth-note" id="authNote">ยังไม่มีบัญชี? <button type="button" data-auth-tab="register">สมัครสมาชิก</button></p></section></div>
   <div class="toast" id="toast">บันทึกแล้ว</div>
   <script src="app.js"></script>
 </body>

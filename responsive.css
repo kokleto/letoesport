@@ -90,6 +90,31 @@ body { transition: background-color .25s, color .25s; }
 .hero-dot { width: 6px; height: 6px; padding: 0; border-radius: 50%; background: rgba(255,255,255,.45); }
 .hero-dot.active { width: 20px; border-radius: 4px; background: var(--lime); }
 @media (max-width: 600px) { .theme-toggle { transform: scale(.9); transform-origin: right center; } .hero-controls { right: 8%; bottom: 14px; } }
+.auth-button { padding: 8px 11px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 11px; font-weight: 700; white-space: nowrap; }
+.auth-button:hover { border-color: var(--coral); color: var(--coral); }
+.register-trigger { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.auth-modal { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; padding: 20px; visibility: hidden; opacity: 0; transition: opacity .2s, visibility .2s; }
+.auth-modal.open { visibility: visible; opacity: 1; }
+.auth-backdrop { position: absolute; inset: 0; background: rgba(16, 19, 23, .78); }
+.auth-panel { position: relative; z-index: 1; width: min(430px, 100%); padding: 30px; background: var(--paper); color: var(--ink); box-shadow: 0 20px 70px rgba(0,0,0,.35); }
+.auth-close { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; background: var(--lime); color: var(--ink); font-size: 22px; line-height: 1; }
+.auth-brand { font: 700 22px 'IBM Plex Sans Thai', sans-serif; letter-spacing: -.5px; }
+.auth-brand span { color: var(--coral); }
+.auth-tabs { display: flex; gap: 18px; margin-top: 28px; border-bottom: 1px solid var(--line); }
+.auth-tab { padding: 0 0 10px; background: transparent; color: var(--muted); font-weight: 700; border-bottom: 2px solid transparent; }
+.auth-tab.active { color: var(--ink); border-color: var(--coral); }
+.auth-panel h2 { margin: 25px 0 6px; font-size: 25px; }
+.auth-subtitle, .auth-note { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.auth-panel form { display: grid; gap: 15px; margin-top: 22px; }
+.auth-panel label { display: grid; gap: 7px; font-size: 12px; font-weight: 700; }
+.auth-panel input { width: 100%; padding: 11px 12px; border: 1px solid var(--line); outline: none; background: transparent; color: var(--ink); font: 13px 'IBM Plex Sans Thai', sans-serif; }
+.auth-panel input:focus { border-color: var(--coral); }
+.auth-submit { padding: 12px; background: var(--lime); color: var(--ink); font-weight: 800; }
+.auth-note { margin: 20px 0 0; text-align: center; }
+.auth-note button { padding: 0; background: transparent; color: var(--coral); font-weight: 800; }
+[data-theme="dark"] .auth-panel { background: #202427; }
+@media (max-width: 680px) { .top-actions { gap: 6px; } .auth-button { padding: 6px 7px; font-size: 9px; } .profile-chip { display: none; } .auth-panel { padding: 25px 20px; } }
+@media (max-width: 420px) { .auth-button { font-size: 0; width: 29px; height: 29px; padding: 0; } .login-trigger::before { content: '↪'; font-size: 16px; } .register-trigger::before { content: '+'; font-size: 18px; } }
 .activity-section { display: flex; justify-content: space-between; align-items: center; gap: 28px; border-top: 1px solid var(--line); padding: 42px 0 62px; }
 .activity-section h2 { margin: 13px 0 8px; font: 700 27px 'IBM Plex Sans Thai', sans-serif; letter-spacing: 0; }
 .activity-section p { max-width: 470px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }

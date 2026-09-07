@@ -72,3 +72,27 @@ document.querySelectorAll('[data-scroll]').forEach(button => button.addEventList
 document.querySelector('#modalClose').addEventListener('click', closeNewsModal);
 document.querySelector('[data-close-modal]').addEventListener('click', closeNewsModal);
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeNewsModal(); });
+const authModal = document.querySelector('#authModal');
+const authTitle = document.querySelector('#authTitle');
+const authSubtitle = document.querySelector('#authSubtitle');
+const authSubmit = document.querySelector('#authSubmit');
+const authNote = document.querySelector('#authNote');
+const nameField = document.querySelector('#nameField');
+function setAuthMode(mode) {
+  const register = mode === 'register';
+  document.querySelectorAll('.auth-tab').forEach(tab => tab.classList.toggle('active', tab.dataset.authTab === mode));
+  authTitle.textContent = register ? 'สร้างบัญชีใหม่' : 'ยินดีต้อนรับกลับ';
+  authSubtitle.textContent = register ? 'สมัครสมาชิกเพื่อร่วมกิจกรรมและคอมมูนิตี้' : 'เข้าสู่ระบบเพื่อร่วมกิจกรรมและคอมมูนิตี้';
+  authSubmit.textContent = register ? 'สมัครสมาชิก' : 'เข้าสู่ระบบ';
+  nameField.hidden = !register;
+  authNote.innerHTML = register ? 'มีบัญชีแล้ว? <button type="button" data-auth-tab="login">เข้าสู่ระบบ</button>' : 'ยังไม่มีบัญชี? <button type="button" data-auth-tab="register">สมัครสมาชิก</button>';
+  authNote.querySelector('button').addEventListener('click', () => setAuthMode(register ? 'login' : 'register'));
+}
+function openAuth(mode) { authModal.classList.add('open'); authModal.setAttribute('aria-hidden', 'false'); setAuthMode(mode); document.querySelector('#authEmail').focus(); }
+function closeAuth() { authModal.classList.remove('open'); authModal.setAttribute('aria-hidden', 'true'); }
+document.querySelectorAll('[data-auth]').forEach(button => button.addEventListener('click', () => openAuth(button.dataset.auth)));
+document.querySelectorAll('[data-auth-tab]').forEach(button => button.addEventListener('click', () => setAuthMode(button.dataset.authTab)));
+document.querySelector('#authClose').addEventListener('click', closeAuth);
+document.querySelector('[data-close-auth]').addEventListener('click', closeAuth);
+document.querySelector('#authForm').addEventListener('submit', event => { event.preventDefault(); showToast(document.querySelector('#authSubmit').textContent + 'สำเร็จแล้ว'); closeAuth(); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape') closeAuth(); });
