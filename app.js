@@ -19,6 +19,8 @@ const newsGrid = document.querySelector('#newsGrid');
 const toast = document.querySelector('#toast');
 const sidebar = document.querySelector('.sidebar');
 const sidebarToggle = document.querySelector('#sidebarToggle');
+const mobileMenuToggle = document.querySelector('#mobileMenuToggle');
+const mobileSidebarBackdrop = document.querySelector('#mobileSidebarBackdrop');
 const thaiDate = document.querySelector('#thaiDate');
 const thaiTime = document.querySelector('#thaiTime');
 function updateThaiClock() {
@@ -35,6 +37,16 @@ sidebarToggle.addEventListener('click', () => {
   sidebarToggle.textContent = collapsed ? '›' : '‹';
   localStorage.setItem('leto-sidebar-collapsed', String(collapsed));
 });
+function setMobileSidebar(open) {
+  sidebar.classList.toggle('mobile-open', open);
+  mobileSidebarBackdrop.classList.toggle('open', open);
+  mobileMenuToggle.classList.toggle('open', open);
+  mobileMenuToggle.setAttribute('aria-expanded', String(open));
+  mobileMenuToggle.setAttribute('aria-label', open ? 'ปิดเมนู' : 'เปิดเมนู');
+}
+mobileMenuToggle.addEventListener('click', () => setMobileSidebar(!sidebar.classList.contains('mobile-open')));
+mobileSidebarBackdrop.addEventListener('click', () => setMobileSidebar(false));
+document.querySelectorAll('.nav-item').forEach(link => link.addEventListener('click', () => setMobileSidebar(false)));
 if (localStorage.getItem('leto-sidebar-collapsed') === 'true') {
   sidebar.classList.add('collapsed');
   sidebarToggle.setAttribute('aria-expanded', 'false');
