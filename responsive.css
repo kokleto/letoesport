@@ -160,9 +160,20 @@ button:has(+ *) { color: inherit; }
   .sidebar .live-indicator, .sidebar .sidebar-label, .sidebar .game-list, .sidebar .sidebar-bottom { display: block; }
   .mobile-sidebar-backdrop { display: block; position: fixed; z-index: 35; inset: 0; background: rgba(16,19,23,.6); opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
   .mobile-sidebar-backdrop.open { opacity: 1; visibility: visible; }
+  .sidebar .nav-item.active { background: var(--lime); color: #101317; }
+  .sidebar .game-filter.active { background: #24282a; color: #f2f2ef; }
 }
 @media (max-width: 680px) { .top-actions { gap: 6px; } .auth-button { padding: 6px 7px; font-size: 9px; } .profile-chip { display: none; } .auth-panel { padding: 25px 20px; } }
 @media (max-width: 420px) { .auth-button { font-size: 0; width: 29px; height: 29px; padding: 0; } .login-trigger::before { content: '↪'; font-size: 16px; } .register-trigger::before { content: '+'; font-size: 18px; } }
+.auth-button, .post-btn, .read-btn, .register-trigger, .activity-launch { color: #101317; }
+.login-trigger { border-color: var(--coral); color: var(--coral); }
+.register-trigger { background: var(--lime); border-color: var(--lime); color: #101317; }
+.feed-actions .like-btn { background: rgba(255,93,67,.13); color: var(--coral); }
+.feed-actions .share-btn { background: var(--lime); color: #101317; }
+.feed-actions .like-btn:hover, .feed-actions .like-btn.liked { background: var(--coral); color: #fff; }
+.feed-actions .share-btn:hover { background: var(--lime); color: #101317; }
+[data-theme="dark"] .login-trigger { border-color: var(--coral); color: var(--coral); }
+[data-theme="dark"] .register-trigger { background: var(--lime); border-color: var(--lime); color: #101317; }
 .activity-section { display: flex; justify-content: space-between; align-items: center; gap: 28px; border-top: 1px solid var(--line); padding: 42px 0 62px; }
 .activity-section h2 { margin: 13px 0 8px; font: 700 27px 'IBM Plex Sans Thai', sans-serif; letter-spacing: 0; }
 .activity-section p { max-width: 470px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
