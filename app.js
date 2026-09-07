@@ -17,6 +17,15 @@ const feedPosts = [
 ];
 const newsGrid = document.querySelector('#newsGrid');
 const toast = document.querySelector('#toast');
+const thaiDate = document.querySelector('#thaiDate');
+const thaiTime = document.querySelector('#thaiTime');
+function updateThaiClock() {
+  const now = new Date();
+  thaiDate.textContent = new Intl.DateTimeFormat('th-TH', { timeZone: 'Asia/Bangkok', weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' }).format(now);
+  thaiTime.textContent = new Intl.DateTimeFormat('th-TH', { timeZone: 'Asia/Bangkok', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).format(now);
+}
+updateThaiClock();
+setInterval(updateThaiClock, 1000);
 function renderNews(filter='all', query='') {
   const items = news.filter(item => (filter === 'all' || item.game === filter) && (!query || `${item.title} ${item.tag}`.toLowerCase().includes(query.toLowerCase())));
   newsGrid.innerHTML = items.length ? items.map(item => `<article class="news-card" tabindex="0" data-news-title="${item.title}"><img src="${item.img}" alt="${item.title}" loading="lazy"><span class="tag">${item.tag}</span><h3>${item.title}</h3><p>${item.desc}</p><time>${item.time}</time><span class="read-more">อ่านรายละเอียด ↗</span></article>`).join('') : '<p class="empty-state">ไม่พบข่าวที่ตรงกับการค้นหา</p>';
@@ -43,7 +52,7 @@ const heroDots = document.querySelector('#heroDots');
 let heroIndex = 0;
 let heroTimer;
 heroDots.innerHTML = heroSlides.map((slide, index) => `<button class="hero-dot${index === 0 ? ' active' : ''}" aria-label="ดูสไลด์ที่ ${index + 1}"></button>`).join('');
-function showHeroSlide(index) { heroIndex = (index + heroSlides.length) % heroSlides.length; const slide = heroSlides[heroIndex]; const action = document.querySelector('#heroAction'); heroSlides.forEach(item => item.classList.remove('active')); slide.classList.add('active'); document.querySelectorAll('.hero-dot').forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === heroIndex)); document.querySelector('#heroTag').textContent = slide.dataset.tag; document.querySelector('#heroTitle').innerHTML = `${slide.dataset.title.split('|')[0]}<br><em>${slide.dataset.title.split('|')[1]}</em>`; document.querySelector('#heroDescription').textContent = slide.dataset.desc; document.querySelector('#heroAuthor').textContent = slide.dataset.author; document.querySelector('#heroTime').textContent = slide.dataset.time; action.innerHTML = heroIndex === heroSlides.length - 1 ? 'เริ่มกิจกรรม <span>↗</span>' : 'อ่านเรื่องเต็ม <span>↗</span>'; action.onclick = () => heroIndex === heroSlides.length - 1 ? window.location.href = 'game.html' : document.querySelector('#news').scrollIntoView(); }
+function showHeroSlide(index) { heroIndex = (index + heroSlides.length) % heroSlides.length; const slide = heroSlides[heroIndex]; const action = document.querySelector('#heroAction'); const isActivity = slide.classList.contains('activity-hero-slide'); heroSlides.forEach(item => item.classList.remove('active')); slide.classList.add('active'); document.querySelectorAll('.hero-dot').forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === heroIndex)); document.querySelector('#heroTag').textContent = slide.dataset.tag; document.querySelector('#heroTitle').innerHTML = `${slide.dataset.title.split('|')[0]}<br><em>${slide.dataset.title.split('|')[1]}</em>`; document.querySelector('#heroDescription').textContent = slide.dataset.desc; document.querySelector('#heroAuthor').textContent = slide.dataset.author; document.querySelector('#heroTime').textContent = slide.dataset.time; action.innerHTML = isActivity ? 'เริ่มกิจกรรม <span>↗</span>' : 'อ่านเรื่องเต็ม <span>↗</span>'; action.onclick = () => isActivity ? window.location.href = 'game.html' : document.querySelector('#news').scrollIntoView(); }
 function resetHeroTimer() { clearInterval(heroTimer); heroTimer = setInterval(() => showHeroSlide(heroIndex + 1), 6000); }
 document.querySelector('#heroPrev').addEventListener('click', () => { showHeroSlide(heroIndex - 1); resetHeroTimer(); });
 document.querySelector('#heroNext').addEventListener('click', () => { showHeroSlide(heroIndex + 1); resetHeroTimer(); });

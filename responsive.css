@@ -91,11 +91,11 @@ body { transition: background-color .25s, color .25s; }
 .hero-dot.active { width: 20px; border-radius: 4px; background: var(--lime); }
 @media (max-width: 600px) { .theme-toggle { transform: scale(.9); transform-origin: right center; } .hero-controls { right: 8%; bottom: 14px; } }
 .activity-section { display: flex; justify-content: space-between; align-items: center; gap: 28px; border-top: 1px solid var(--line); padding: 42px 0 62px; }
-.activity-section h2 { margin: 13px 0 8px; font: 700 27px 'Space Grotesk', 'Noto Sans Thai'; letter-spacing: -1px; }
+.activity-section h2 { margin: 13px 0 8px; font: 700 27px 'IBM Plex Sans Thai', sans-serif; letter-spacing: 0; }
 .activity-section p { max-width: 470px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
 .activity-launch { min-width: 230px; padding: 18px; background: var(--ink); color: var(--paper); display: grid; gap: 14px; text-decoration: none; transition: transform .2s, background .2s; }
 .activity-launch:hover { transform: translateY(-4px); background: var(--coral); color: #fff; }
-.activity-led { color: var(--coral); font: 700 34px 'Space Grotesk'; letter-spacing: 3px; text-shadow: 0 0 12px rgba(255,93,67,.45); }
+.activity-led { color: var(--coral); font: 700 34px 'IBM Plex Sans Thai'; letter-spacing: 3px; text-shadow: 0 0 12px rgba(255,93,67,.45); }
 .activity-cta { display: flex; justify-content: space-between; font-size: 12px; font-weight: 800; }
 .activity-cta b { font-size: 18px; line-height: 12px; }
 [data-theme="dark"] .activity-launch { background: #0c0f11; }
